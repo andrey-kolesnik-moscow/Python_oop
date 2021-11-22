@@ -128,7 +128,10 @@ def read_package(workout_type: str, data: list) -> Training:
             'RUN': Running,
             'WLK': SportsWalking,
             }
-    return dict[workout_type](*data)
+    if workout_type in dict:
+        return dict[workout_type](*data)
+    else:
+        raise Exception('Unknown type of training')
 
 
 def main(training: Training) -> None:
@@ -140,7 +143,7 @@ def main(training: Training) -> None:
 if __name__ == '__main__':
     packages = [
         ('SWM', [720, 1, 80, 25, 40]),
-        ('RUN', [15000, 1, 75]),
+        ('RU', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
     ]
 
